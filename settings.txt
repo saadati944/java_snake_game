@@ -1,0 +1,13 @@
+# this is the settings file
+# valid form:
+#   <parameter name> <value>
+# examples :
+#   width 35
+#   height 35
+#   fps 15
+#   delay 4
+
+width 40
+height 20
+fps 20
+delay 10
