@@ -33,11 +33,15 @@ public class Settings
     //character to show food
     public static char foodChar = 'X';
 
+    public static boolean isLinux = false;
+
     /**
      * read settings from settings file if exists
      */
     public static void readFromFile()
     {
+        isLinux = System.getProperty("os.name").equals("Linux");
+
         File settingsFile;
         Scanner scanner;
         try

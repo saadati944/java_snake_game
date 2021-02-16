@@ -1,10 +1,18 @@
 package simple.snake;
 
+import java.lang.management.OperatingSystemMXBean;
+
 public class Main
 {
 
     public static void main(String[] args)
     {
+        if(Settings.isLinux)
+            System.out.println("os is linux");
+        else
+            System.out.println("os is not linux");
+
+
         System.out.println("before reading file :");
         System.out.print("width  :   ");
         System.out.println(Settings.worldWidth);
@@ -24,6 +32,11 @@ public class Main
         System.out.println(Settings.emptyChar);
 
         Settings.readFromFile();
+
+        if(Settings.isLinux)
+            System.out.println("os is linux");
+        else
+            System.out.println("os is not linux");
 
         System.out.println("after reading file :");
         System.out.print("width  :   ");
