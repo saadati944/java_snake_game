@@ -14,6 +14,10 @@ public class Main
         System.out.println(Settings.frameRate);
         System.out.print("delay  :   ");
         System.out.println(Settings.foodDelay);
+        System.out.print("head  :   ");
+        System.out.println(Settings.snakeHead);
+        System.out.print("body  :   ");
+        System.out.println(Settings.snakeBody);
 
         Settings.readFromFile();
 
@@ -26,6 +30,10 @@ public class Main
         System.out.println(Settings.frameRate);
         System.out.print("delay  :   ");
         System.out.println(Settings.foodDelay);
+        System.out.print("head  :   ");
+        System.out.println(Settings.snakeHead);
+        System.out.print("body  :   ");
+        System.out.println(Settings.snakeBody);
 
     }
 }

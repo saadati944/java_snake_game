@@ -6,8 +6,21 @@
 #   height 35
 #   fps 15
 #   delay 4
+#   head @
+#   body O
+#
+# valid parameters :
+#    width
+#    height
+#    fps
+#    delay
+#    head
+#    body
+
 
 width 40
 height 20
 fps 20
 delay 10
+head $
+body #

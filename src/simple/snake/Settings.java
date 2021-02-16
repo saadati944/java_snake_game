@@ -21,6 +21,13 @@ public class Settings
     public static int foodDelay = 2;
 
 
+    // character to show snake head
+    public static char snakeHead = '@';
+
+    // character to show snake body
+    public static char snakeBody = 'O';
+
+
     /**
      * read settings from settings file if exists
      */
@@ -61,6 +68,16 @@ public class Settings
                 try
                 {
                     foodDelay = Integer.parseInt(line.substring(6).strip());
+                }catch (Exception e){continue;}
+            else if (line.startsWith("head ") && line.length()==6)
+                try
+                {
+                    snakeHead = line.charAt(5);
+                }catch (Exception e){continue;}
+            else if (line.startsWith("body ") && line.length()==6)
+                try
+                {
+                    snakeBody = line.charAt(5);
                 }catch (Exception e){continue;}
 
         }
