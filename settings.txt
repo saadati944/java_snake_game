@@ -16,6 +16,8 @@
 #    delay
 #    head
 #    body
+#    food
+#    empty
 
 
 width 40
@@ -24,3 +26,5 @@ fps 20
 delay 10
 head $
 body #
+empty  
+food *

@@ -27,6 +27,11 @@ public class Settings
     // character to show snake body
     public static char snakeBody = 'O';
 
+    // character to show empty space
+    public static char emptyChar = ' ';
+
+    //character to show food
+    public static char foodChar = 'X';
 
     /**
      * read settings from settings file if exists
@@ -78,6 +83,16 @@ public class Settings
                 try
                 {
                     snakeBody = line.charAt(5);
+                }catch (Exception e){continue;}
+            else if (line.startsWith("food ") && line.length()==6)
+                try
+                {
+                    foodChar = line.charAt(5);
+                }catch (Exception e){continue;}
+            else if (line.startsWith("empty ") && line.length()==7)
+                try
+                {
+                    emptyChar = line.charAt(6);
                 }catch (Exception e){continue;}
 
         }

@@ -18,6 +18,10 @@ public class Main
         System.out.println(Settings.snakeHead);
         System.out.print("body  :   ");
         System.out.println(Settings.snakeBody);
+        System.out.print("food  :   ");
+        System.out.println(Settings.foodChar);
+        System.out.print("empty  :   ");
+        System.out.println(Settings.emptyChar);
 
         Settings.readFromFile();
 
@@ -34,6 +38,10 @@ public class Main
         System.out.println(Settings.snakeHead);
         System.out.print("body  :   ");
         System.out.println(Settings.snakeBody);
+        System.out.print("food  :   ");
+        System.out.println(Settings.foodChar);
+        System.out.print("empty  :   ");
+        System.out.println(Settings.emptyChar);
 
     }
 }
