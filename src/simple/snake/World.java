@@ -11,8 +11,7 @@ public class World
 
     public World()
     {
-        clearScreen();
-        show();
+
     }
 
     public void addPoint(Point p)
@@ -34,6 +33,7 @@ public class World
             //System.out.println();
             sc.append(System.lineSeparator());
         }
+        clearScreen();
         System.out.println(sc.toString());
         System.out.flush();
     }
@@ -62,6 +62,6 @@ public class World
 
     public void reset()
     {
-
+        this.points = new ArrayList<Point>();
     }
 }
