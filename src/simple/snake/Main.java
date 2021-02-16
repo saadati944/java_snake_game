@@ -1,60 +1,11 @@
 package simple.snake;
 
-import java.lang.management.OperatingSystemMXBean;
 
 public class Main
 {
-
     public static void main(String[] args)
     {
-        if(Settings.isLinux)
-            System.out.println("os is linux");
-        else
-            System.out.println("os is not linux");
-
-
-        System.out.println("before reading file :");
-        System.out.print("width  :   ");
-        System.out.println(Settings.worldWidth);
-        System.out.print("height :   ");
-        System.out.println(Settings.worldHeight);
-        System.out.print("fps    :   ");
-        System.out.println(Settings.frameRate);
-        System.out.print("delay  :   ");
-        System.out.println(Settings.foodDelay);
-        System.out.print("head  :   ");
-        System.out.println(Settings.snakeHead);
-        System.out.print("body  :   ");
-        System.out.println(Settings.snakeBody);
-        System.out.print("food  :   ");
-        System.out.println(Settings.foodChar);
-        System.out.print("empty  :   ");
-        System.out.println(Settings.emptyChar);
-
         Settings.readFromFile();
-
-        if(Settings.isLinux)
-            System.out.println("os is linux");
-        else
-            System.out.println("os is not linux");
-
-        System.out.println("after reading file :");
-        System.out.print("width  :   ");
-        System.out.println(Settings.worldWidth);
-        System.out.print("height :   ");
-        System.out.println(Settings.worldHeight);
-        System.out.print("fps    :   ");
-        System.out.println(Settings.frameRate);
-        System.out.print("delay  :   ");
-        System.out.println(Settings.foodDelay);
-        System.out.print("head  :   ");
-        System.out.println(Settings.snakeHead);
-        System.out.print("body  :   ");
-        System.out.println(Settings.snakeBody);
-        System.out.print("food  :   ");
-        System.out.println(Settings.foodChar);
-        System.out.print("empty  :   ");
-        System.out.println(Settings.emptyChar);
-
+        World world = new World();
     }
 }
