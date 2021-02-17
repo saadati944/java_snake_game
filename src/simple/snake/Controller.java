@@ -1,7 +1,5 @@
 package simple.snake;
 
-import java.text.BreakIterator;
-import java.util.Scanner;
 
 public class Controller
 {
@@ -15,7 +13,6 @@ public class Controller
     private snakeDirection direction = snakeDirection.Paused;
     public static boolean isLive = true;
 
-    private Scanner scanner;
 
     public enum inputType
     {
@@ -40,7 +37,6 @@ public class Controller
     // constructor (initialization)
     public Controller()
     {
-        this.scanner = new Scanner(System.in);
         this.world = new World();
 
         head = new LinkedList();
