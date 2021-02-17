@@ -32,6 +32,12 @@ public class Settings
     // character to show food
     public static char foodChar = 'X';
 
+    // snake start point
+    public static Point snakeStartPoint = new Point(1, 1, snakeHead);
+
+    // snake start direction
+    public static Controller.snakeDirection snakeStartDirection = Controller.snakeDirection.Right;
+
 
     // don't touch these ↓↓↓
     public static int frameDelay = 0;
