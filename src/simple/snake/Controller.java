@@ -41,6 +41,7 @@ public class Controller
 
         head = new LinkedList();
         head.value = Settings.snakeStartPoint;
+        tail = head;
 
         direction = Settings.snakeStartDirection;
 
@@ -133,10 +134,19 @@ public class Controller
 
         // change head to new head
         LinkedList newHead = new LinkedList();
+
         ((Point) head.value).c = Settings.snakeBody;
+
         newHead.value = newHeadPoint;
+
         newHead.next = head;
+        head.previous = newHead;
+
         head = newHead;
+
+
+        tail = tail.previous;
+        tail.next = null;
     }
 
     /**

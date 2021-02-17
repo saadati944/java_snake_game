@@ -14,7 +14,7 @@ public class Settings
     public static int worldHeight =20;
 
     // game speed
-    public static int frameRate = 15;
+    public static int frameRate = 7;
 
     // how many frames should wait after
     // eating a food to appear a new one
