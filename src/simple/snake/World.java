@@ -52,7 +52,7 @@ public class World
     public char getCharAt(int x, int y)
     {
         for (Point p : points)
-            if (p.x == x && p.y == y)
+            if (p != null && p.x == x && p.y == y)
                 return p.c;
         return Settings.emptyChar;
     }
