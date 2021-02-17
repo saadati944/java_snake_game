@@ -13,13 +13,12 @@ public class Settings
     public static int worldWidth = 80;
     public static int worldHeight =20;
 
-    //game speed
-    public static int frameRate = 30;
+    // game speed
+    public static int frameRate = 15;
 
     // how many frames should wait after
     // eating a food to appear a new one
     public static int foodDelay = 2;
-
 
     // character to show snake head
     public static char snakeHead = '@';
@@ -30,9 +29,12 @@ public class Settings
     // character to show empty space
     public static char emptyChar = ' ';
 
-    //character to show food
+    // character to show food
     public static char foodChar = 'X';
 
+
+    // don't touch these ↓↓↓
+    public static int frameDelay = 0;
     public static boolean isLinux = false;
 
     /**
@@ -48,6 +50,7 @@ public class Settings
         {
             settingsFile = new File(settingsPath);
             scanner = new Scanner(settingsFile);
+            frameDelay = (int)(1000.0 / frameRate);
         }
         catch(Exception e)
         {
