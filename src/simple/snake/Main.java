@@ -6,6 +6,7 @@ public class Main
     public static void main(String[] args)
     {
         Settings.readFromFile();
-        World world = new World();
+        Controller controller = new Controller();
+        controller.start();
     }
 }

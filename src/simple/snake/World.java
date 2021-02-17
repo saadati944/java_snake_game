@@ -1,8 +1,5 @@
 package simple.snake;
 
-import com.sun.source.tree.ContinueTree;
-
-import java.lang.management.OperatingSystemMXBean;
 import java.util.ArrayList;
 
 public class World
