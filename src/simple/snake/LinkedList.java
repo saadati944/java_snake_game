@@ -4,6 +4,7 @@ public class LinkedList
 {
     public Object value = null;
     public LinkedList next = null;
+    public LinkedList previous = null;
 
     public LinkedList()
     {
