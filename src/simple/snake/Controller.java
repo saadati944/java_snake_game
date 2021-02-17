@@ -1,5 +1,6 @@
 package simple.snake;
 
+import java.text.BreakIterator;
 import java.util.Scanner;
 
 public class Controller
@@ -12,7 +13,7 @@ public class Controller
 
     public static inputType input = inputType.Empty;
     private snakeDirection direction = snakeDirection.Paused;
-    boolean isLive = true;
+    public static boolean isLive = true;
 
     private Scanner scanner;
 
@@ -32,6 +33,7 @@ public class Controller
         Right,
         Left,
         Up,
+        Down,
         Paused
     }
 
@@ -40,6 +42,12 @@ public class Controller
     {
         this.scanner = new Scanner(System.in);
         this.world = new World();
+
+        head = new LinkedList();
+        head.value = Settings.snakeStartPoint;
+
+        direction = Settings.snakeStartDirection;
+
         InputController inputController = new InputController();
         inputController.start();
     }
@@ -47,26 +55,112 @@ public class Controller
 
     public void start()
     {
-        System.out.println("start called ... ");
+        long startTime;
         while (isLive)
         {
-            try
-            {
-                Thread.sleep(10);
-            }catch (Exception e){}
+            startTime = System.nanoTime();
             if(input == inputType.Exit)
             {
                 System.out.println("exiting ...");
                 return;
             }
+
+            executeInput();
+
+            world.reset();
+            addSnakeToWorld();
+            world.show();
+
+            try
+            {
+                Thread.sleep(Math.abs((System.nanoTime() - startTime)/10000 - Settings.frameDelay));
+            }catch (Exception e){}
         }
     }
 
-    private void loop()
+    private void executeInput()
     {
-        addSnakeToWorld();
-        world.show();
-        world.reset();
+        Point newHeadPoint = new Point(0, 0);
+
+        switch (input)
+        {
+            case Right:
+                if (direction!= snakeDirection.Left)
+                    direction = snakeDirection.Right;
+                break;
+            case Left :
+                if (direction!= snakeDirection.Right)
+                    direction = snakeDirection.Left;
+                break;
+            case Up :
+                if (direction!= snakeDirection.Down)
+                    direction = snakeDirection.Up;
+                break;
+            case Down :
+                if (direction!= snakeDirection.Up)
+                    direction = snakeDirection.Down;
+                break;
+            case Menu :
+                direction = snakeDirection.Paused;
+                break;
+        }
+        switch (direction)
+        {
+            case Right:
+                newHeadPoint = new Point(((Point) head.value).x + 1, ((Point) head.value).y, Settings.snakeHead);
+                break;
+            case Left:
+                newHeadPoint = new Point(((Point) head.value).x - 1, ((Point) head.value).y, Settings.snakeHead);
+                break;
+            case Up:
+                newHeadPoint = new Point(((Point) head.value).x, ((Point) head.value).y - 1, Settings.snakeHead);
+                break;
+            case Down:
+                newHeadPoint = new Point(((Point) head.value).x, ((Point) head.value).y + 1, Settings.snakeHead);
+                break;
+            case Paused:
+                return;
+        }
+
+        //the snake must not be able to move in the opposite direction
+        if(head.next != null && newHeadPoint.x ==((Point)head.next.value).x && newHeadPoint.y ==((Point)head.next.value).y)
+        {
+            return;
+        }
+
+        //the snake must not be able to cross itself
+        if (!checkPoint(newHeadPoint))
+        {
+            isLive = false; // the snake bit itself
+            return;
+        }
+
+        // change head to new head
+        LinkedList newHead = new LinkedList();
+        ((Point) head.value).c = Settings.snakeBody;
+        newHead.value = newHeadPoint;
+        newHead.next = head;
+        head = newHead;
+    }
+
+    /**
+     * return true if the point is empty
+     */
+    private boolean checkPoint(Point p)
+    {
+        // the snake can't move out of the world
+        if(p.x < 0 || p.x >= Settings.worldWidth || p.y < 0 || p.y >= Settings.worldHeight)
+            return false;
+
+        // the snake can't move over itself
+        LinkedList cur = head;
+        while (cur != null)
+        {
+            if(((Point)cur.value).x == p.x && ((Point)cur.value).y == p.y)
+                return false;
+            cur = cur.next;
+        }
+        return true;
     }
 
     private void addSnakeToWorld()
@@ -91,10 +185,9 @@ class InputController extends Thread
             RawConsoleInput.resetConsoleMode();
             while (true)
             {
-                if(inp == 27)
+                if (inp == 27 || !Controller.isLive)
                     return;
                 inp = RawConsoleInput.read(true);
-                System.out.print("detecting input : ");
                 System.out.println(inp);
                 switch (inp)
                 {
