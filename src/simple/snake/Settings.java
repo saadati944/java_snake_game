@@ -18,7 +18,7 @@ public class Settings
 
     // how many frames should wait after
     // eating a food to appear a new one
-    public static int foodDelay = 200;
+    public static int foodDelay = 2;
 
     // character to show snake head
     public static char snakeHead = '@';
@@ -44,7 +44,7 @@ public class Settings
 
 
     // don't touch these ↓↓↓
-    public static int frameDelay = 0;
+    public static int frameDelay = 200;
     public static boolean isLinux = false;
 
     /**

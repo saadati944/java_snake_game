@@ -9,6 +9,8 @@ public class Controller
 
     private World world;
 
+    private int snakeLength = 0;
+
     public static inputType input = inputType.Empty;
     private snakeDirection direction = snakeDirection.Paused;
     public static boolean isLive = true;
@@ -52,10 +54,9 @@ public class Controller
 
     public void start()
     {
-        long startTime;
+        long startTime = System.nanoTime();
         while (isLive)
         {
-            startTime = System.nanoTime();
             if(input == inputType.Exit)
             {
                 System.out.println("exiting ...");
@@ -70,8 +71,9 @@ public class Controller
 
             try
             {
-                Thread.sleep(Math.abs((System.nanoTime() - startTime)/10000 - Settings.frameDelay));
+                Thread.sleep(Settings.frameDelay - Math.abs((System.nanoTime() - startTime)/10000));
             }catch (Exception e){}
+            startTime = System.nanoTime();
         }
     }
 
@@ -143,10 +145,14 @@ public class Controller
         head.previous = newHead;
 
         head = newHead;
+        snakeLength++;
 
-
-        tail = tail.previous;
-        tail.next = null;
+        if(snakeLength > Settings.snakeMinLength)
+        {
+            tail = tail.previous;
+            tail.next = null;
+            snakeLength--;
+        }
     }
 
     /**
@@ -194,7 +200,6 @@ class InputController extends Thread
                 if (inp == 27 || !Controller.isLive)
                     return;
                 inp = RawConsoleInput.read(true);
-                System.out.println(inp);
                 switch (inp)
                 {
                     case 'w', 'W' -> Controller.input = Controller.inputType.Up;
