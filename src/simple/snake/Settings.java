@@ -40,7 +40,7 @@ public class Settings
     public static Point snakeStartPoint = new Point(1, 1, snakeHead);
 
     // snake start direction
-    public static Controller.snakeDirection snakeStartDirection = Controller.snakeDirection.Right;
+    public static Controller.snakeDirection snakeStartDirection = Controller.snakeDirection.Paused;
 
 
     // don't touch these ↓↓↓
