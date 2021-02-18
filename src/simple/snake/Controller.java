@@ -236,8 +236,6 @@ class InputController extends Thread
             RawConsoleInput.resetConsoleMode();
             while (true)
             {
-                if (inp == 27 || !Controller.isLive)
-                    return;
                 inp = RawConsoleInput.read(true);
                 switch (inp)
                 {
@@ -248,6 +246,8 @@ class InputController extends Thread
                     case 'e', 'E' -> Controller.input = Controller.inputType.Menu;
                     case 27 -> Controller.input = Controller.inputType.Exit; // 27 = escape key
                 }
+                if (inp == 27 || !Controller.isLive)
+                    return;
             }
         } catch (Exception e)
         {
