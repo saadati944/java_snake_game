@@ -15,7 +15,9 @@ public class Controller
     private int bodyCharIndex = 0;
 
     public static inputType input = inputType.Empty;
+
     private snakeDirection direction = snakeDirection.Paused;
+
     public static boolean isLive = true;
 
 
@@ -71,6 +73,7 @@ public class Controller
             world.reset();
             addSnakeToWorld();
             world.show();
+            System.out.println(String.format("Snake length : %d", snakeLength));
 
             try
             {
