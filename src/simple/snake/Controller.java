@@ -245,6 +245,7 @@ class InputController extends Thread
                     case 's', 'S' -> Controller.input = Controller.inputType.Down;
                     case 'a', 'A' -> Controller.input = Controller.inputType.Left;
                     case 'd', 'D' -> Controller.input = Controller.inputType.Right;
+                    case 'e', 'E' -> Controller.input = Controller.inputType.Menu;
                     case 27 -> Controller.input = Controller.inputType.Exit; // 27 = escape key
                 }
             }
