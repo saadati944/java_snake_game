@@ -10,8 +10,8 @@ public class Settings
 
 
     // size of the world
-    public static int worldWidth = 80;
-    public static int worldHeight= 20;
+    public static int worldWidth = 60;
+    public static int worldHeight= 19;
 
     // game speed
     public static int frameRate = 5;
@@ -32,6 +32,8 @@ public class Settings
     // snake minimum length
     public static int snakeMinLength = 10;
 
+    // character to show borders
+    public static char bordeChar = '#';
 
     // character to show food
     public static char foodChar = 'X';

@@ -20,18 +20,23 @@ public class World
     public void show()
     {
         StringBuilder sc = new StringBuilder();
-        for (int j = 0; j < Settings.worldHeight; j++)
+        for (int j = 0; j < Settings.worldHeight+2; j++)
         {
-            for (int i = 0; i < Settings.worldWidth; i++)
+            for (int i = 0; i < Settings.worldWidth+2; i++)
             {
+                if(i==0 || j==0 || i==Settings.worldWidth + 1 || j== Settings.worldHeight + 1)
+                {
+                    sc.append(Settings.bordeChar);
+                    continue;
+                }
                 //System.out.print(getCharAt(i, j));
-                sc.append(getCharAt(i, j));
+                sc.append(getCharAt(i-1, j-1));
             }
             //System.out.println();
             sc.append(System.lineSeparator());
         }
         clearScreen();
-        System.out.println(sc.toString());
+        System.out.print(sc.toString());
         System.out.flush();
     }
 

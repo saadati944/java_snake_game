@@ -84,8 +84,8 @@ public class Controller
             addSnakeToWorld();
             generateFood();
             world.show();
-            System.out.println(String.format("\nSnake length : %d", snakeLength));
-            System.out.println(food == null?"food is null" : String.format("food is : %d, %d            ", food.x, food.y));
+            System.out.println(String.format("Snake length : %d", snakeLength));
+            System.out.println(food == null?"food is null" : String.format("food is : (x=%d, y=%d)            ", food.x, food.y));
 
             try
             {
