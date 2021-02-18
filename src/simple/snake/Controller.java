@@ -4,12 +4,15 @@ package simple.snake;
 public class Controller
 {
     // variables
+    // todo : add description for each variable
     private LinkedList head;
     private LinkedList tail;
 
     private World world;
 
     private int snakeLength = 0;
+
+    private int bodyCharIndex = 0;
 
     public static inputType input = inputType.Empty;
     private snakeDirection direction = snakeDirection.Paused;
@@ -137,7 +140,9 @@ public class Controller
         // change head to new head
         LinkedList newHead = new LinkedList();
 
-        ((Point) head.value).c = Settings.snakeBody;
+        ((Point) head.value).c = Settings.snakeBody[bodyCharIndex++];
+        if(bodyCharIndex == Settings.snakeBody.length)
+            bodyCharIndex = 0;
 
         newHead.value = newHeadPoint;
 

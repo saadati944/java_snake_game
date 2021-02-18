@@ -7,7 +7,7 @@ public class Point
     public int x = 0;
     public int y = 0;
 
-    public char c = Settings.snakeBody;
+    public char c = Settings.snakeBody[0];
 
     public Point(int x, int y)
     {

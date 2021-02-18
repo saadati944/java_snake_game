@@ -11,7 +11,7 @@ public class Settings
 
     // size of the world
     public static int worldWidth = 80;
-    public static int worldHeight =20;
+    public static int worldHeight= 20;
 
     // game speed
     public static int frameRate = 5;
@@ -21,10 +21,10 @@ public class Settings
     public static int foodDelay = 2;
 
     // character to show snake head
-    public static char snakeHead = '@';
+    public static char snakeHead = '●';
 
     // character to show snake body
-    public static char snakeBody = 'O';
+    public static char[] snakeBody = new char[]{'o', 'O'};
 
     // character to show empty space
     public static char emptyChar = ' ';
@@ -98,11 +98,12 @@ public class Settings
                 {
                     snakeHead = line.charAt(5);
                 }catch (Exception e){continue;}
-            else if (line.startsWith("body ") && line.length()==6)
-                try
-                {
-                    snakeBody = line.charAt(5);
-                }catch (Exception e){continue;}
+            //todo : complete this part
+//            else if (line.startsWith("body ") && line.length()==6)
+//                try
+//                {
+//                    snakeBody = line.charAt(5);
+//                }catch (Exception e){continue;}
             else if (line.startsWith("food ") && line.length()==6)
                 try
                 {
