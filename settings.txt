@@ -20,11 +20,3 @@
 #    empty
 
 
-width 10
-height 5
-fps 20
-delay 10
-head $
-body #
-empty +
-food *

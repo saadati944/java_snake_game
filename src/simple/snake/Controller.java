@@ -1,6 +1,9 @@
 package simple.snake;
 
 
+import java.nio.channels.NonWritableChannelException;
+import java.util.Random;
+
 public class Controller
 {
     // variables
@@ -14,11 +17,17 @@ public class Controller
 
     private int bodyCharIndex = 0;
 
+    private int waitTimeAfterlastFood = 0;
+
     public static inputType input = inputType.Empty;
 
     private snakeDirection direction = snakeDirection.Paused;
 
     public static boolean isLive = true;
+
+    public static Point food = null;
+
+    Random random = new Random();
 
 
     public enum inputType
@@ -45,6 +54,7 @@ public class Controller
     public Controller()
     {
         this.world = new World();
+        world.clearCommand();
 
         head = new LinkedList();
         head.value = Settings.snakeStartPoint;
@@ -72,8 +82,10 @@ public class Controller
 
             world.reset();
             addSnakeToWorld();
+            generateFood();
             world.show();
-            System.out.println(String.format("Snake length : %d", snakeLength));
+            System.out.println(String.format("\nSnake length : %d", snakeLength));
+            System.out.println(food == null?"food is null" : String.format("food is : %d, %d            ", food.x, food.y));
 
             try
             {
@@ -81,6 +93,23 @@ public class Controller
             }catch (Exception e){}
             startTime = System.nanoTime();
         }
+    }
+
+    private void generateFood()
+    {
+        waitTimeAfterlastFood ++;
+        if(food != null)
+        {
+            world.addPoint(food);
+            return;
+        }
+        if(waitTimeAfterlastFood < Settings.foodDelay)
+        {
+            return;
+        }
+        waitTimeAfterlastFood = 0;
+        food = new Point(random.nextInt(Settings.worldWidth-10)+5,random.nextInt(Settings.worldHeight-10)+5, Settings.foodChar);
+        world.addPoint(food);
     }
 
     private void executeInput()
@@ -155,7 +184,9 @@ public class Controller
         head = newHead;
         snakeLength++;
 
-        if(snakeLength > Settings.snakeMinLength)
+        if(food != null && newHeadPoint.x == food.x && newHeadPoint.y == food.y)
+            food = null;
+        else if(snakeLength > Settings.snakeMinLength)
         {
             tail = tail.previous;
             tail.next = null;

@@ -49,6 +49,20 @@ public class World
         System.out.flush();
     }
 
+    //bug : the clear command does not work !!!
+    public void clearCommand()
+    {
+        try
+        {
+            if (Settings.isLinux)
+                Runtime.getRuntime().exec("clear");
+            else
+                Runtime.getRuntime().exec("cls");
+        } catch (Exception e)
+        {
+        }
+    }
+
     public char getCharAt(int x, int y)
     {
         for (Point p : points)
