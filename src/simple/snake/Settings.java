@@ -14,11 +14,11 @@ public class Settings
     public static int worldHeight =20;
 
     // game speed
-    public static int frameRate = 7;
+    public static int frameRate = 5;
 
     // how many frames should wait after
     // eating a food to appear a new one
-    public static int foodDelay = 2;
+    public static int foodDelay = 200;
 
     // character to show snake head
     public static char snakeHead = '@';
@@ -28,6 +28,10 @@ public class Settings
 
     // character to show empty space
     public static char emptyChar = ' ';
+
+    // snake minimum length
+    public static int snakeMinLength = 10;
+
 
     // character to show food
     public static char foodChar = 'X';
@@ -52,11 +56,13 @@ public class Settings
 
         File settingsFile;
         Scanner scanner;
+
+        frameDelay = (int)(1000.0 / frameRate);
+
         try
         {
             settingsFile = new File(settingsPath);
             scanner = new Scanner(settingsFile);
-            frameDelay = (int)(1000.0 / frameRate);
         }
         catch(Exception e)
         {
