@@ -8,11 +8,12 @@ This is my first java project. Just for learning things like reading a file, mul
 
 1. Download latest jar file from releases (or from projects root directory)
 1. Execute the following command in the terminal :
-    in linue
+    
+    in linux
     ```shell
     clear; java -jar snake.jar
     ```
-    of in windows
+    or in windows
     ```cmd
     cls & java -jar snake.jar
     ```
